@@ -309,7 +309,7 @@ class Decoder(srd.Decoder):
             for i in range(dlc2len(self.dlc)):
                 x = self.dlc_start + 4 + (8 * i)
                 b = int(''.join(str(d) for d in self.bits[x:x + 8]), 2)
-                self.bytes[i] = b
+                self.bytes.append(b)
                 ss = self.ss_databytebits[i * 8]
                 es = self.ss_databytebits[((i + 1) * 8) - 1]
                 self.putg(ss, es, [0, ['Data byte %d: 0x%02x' % (i, b),
